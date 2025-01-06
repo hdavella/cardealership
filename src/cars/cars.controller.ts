@@ -1,9 +1,13 @@
-import { Controller, Get, Param, Res, HttpStatus } from '@nestjs/common';
+import { Controller, 
+  Get, 
+  Param, 
+  Res, 
+  HttpStatus, } from '@nestjs/common';
 
 @Controller('cars')
 export class CarsController {
 
-  private cars=['Toyota', 'Honda', 'VW'];
+  private cars=['Toyota', 'Honda', 'VW', ];
 
   @Get()
   getAllCars() {
