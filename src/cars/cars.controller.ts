@@ -13,7 +13,7 @@ export class CarsController {
   @Get(':id')
   getCarById(@Param('id') id){
 
-    // return {id};
-    return id;
+    return {id};
+    // return id;
   }
 }
