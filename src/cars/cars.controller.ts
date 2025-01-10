@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Res, HttpStatus, ParseIntPipe, NotFoundException, Post, Body, Delete, Patch, } from '@nestjs/common';
+import { Controller, Get, Param, Res, HttpStatus, ParseIntPipe, NotFoundException, Post, Body, Delete, Patch, ParseUUIDPipe, } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -14,13 +14,12 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarById(@Param('id',ParseIntPipe) id:number , /*@Res() res*/){
+  getCarById(@Param('id', ParseUUIDPipe, ) id:string , /*@Res() res*/){
 
-    if(this.carService.findOneById(id) != "-1"){
     return this.carService.findOneById(id);
-    }
+
     // res.status(HttpStatus.NOT_FOUND); funciona igual que el de abajo, sin arrojar la excepcion
-    throw new NotFoundException(`Item ${id} not found`);
+    //throw new NotFoundException(`Item ${id} not found`);
   }
 
   @Post()
@@ -31,13 +30,13 @@ export class CarsController {
   @Patch(':id')
   updateCar(
     @Body() body:any,
-    @Param('id',ParseIntPipe) id:number,
+    @Param('id', ParseUUIDPipe, ) id:string,
   ){
     return body;
   }
 
   @Delete(':id')
-  delCar(@Param('id',ParseIntPipe) id:number){
+  delCar(@Param('id') id:string, ){
     return {
       method: "delete",
       id,
