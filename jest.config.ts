@@ -102,7 +102,7 @@ const config: Config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -150,6 +150,8 @@ const config: Config = {
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
+  testEnvironment: "jest-environment-node",
+
 
   // Adds a location field to test results
   // testLocationInResults: false,
