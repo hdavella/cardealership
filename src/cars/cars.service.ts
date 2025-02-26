@@ -45,11 +45,12 @@ export class CarsService {
         return newCar;
      };
 
-     update(updateCarDto: UpdateCarDto){
-        let carDb = this.findOneById(updateCarDto.id);
+     update(id: string, updateCarDto: UpdateCarDto){
+        let carDb = this.findOneById(id);
+        if(carDb.id !== updateCarDto.id) throw new BadRequestException();
         this.cars=this.cars.map(car=>{
                 if(car.id === carDb.id){
-                    carDb={...carDb, ...updateCarDto,};
+                    carDb={...carDb, ...updateCarDto, id};
                     return carDb;
                 }
                 return car;                

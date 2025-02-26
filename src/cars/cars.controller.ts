@@ -28,9 +28,9 @@ export class CarsController {
     return this.carService.create(createCarDto);
   }
 
-  @Patch()
-  updateCar(@Body() updateCarDto:UpdateCarDto, ){
-    return this.carService.update(updateCarDto);
+  @Patch(':id')
+  updateCar(@Param('id', ParseUUIDPipe, ) id:string , @Body() updateCarDto:UpdateCarDto, ){
+    return this.carService.update(id, updateCarDto);
   }
 
   @Delete(':id')
