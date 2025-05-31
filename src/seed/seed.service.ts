@@ -7,10 +7,14 @@ import { brandSeed } from './data/brands.seed';
 @Injectable()
 export class SeedService {
 
-  constructor(private readonly carService: CarsService, private readonly brandService: BrandsService){
-  }
+  constructor(
+    
+    private readonly carService: CarsService, private readonly brandService: BrandsService)
+    
+    {}
 
   populateDb() {
+    
     this.brandService.fillBrandsWithSeedData(brandSeed);
     this.carService.fillCarsWithSeedData(carsSeed);
     return "Ok";
